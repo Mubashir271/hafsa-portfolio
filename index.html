@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hafsa Shahid — Textile Designer</title>
+<meta name="description" content="Portfolio of Hafsa Shahid, textile designer: CAD print design and screen printing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f2ea;
+    --surface: #fffdf9;
+    --ink: #2a1a17;
+    --muted: #7a6660;
+    --line: #e4d9cc;
+    --accent: #7a1f2b;
+    --accent-soft: #f1dfd8;
+    --gold: #c9973f;
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "DM Sans", system-ui, -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.65 var(--sans); -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+  /* nav */
+  header.nav { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  header.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .brand { font-family: var(--serif); font-size: 24px; font-weight: 600; text-decoration: none; letter-spacing: .01em; }
+  .nav-links { display: flex; gap: 26px; font-size: 14px; }
+  .nav-links a { text-decoration: none; color: var(--muted); transition: color .2s; }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* hero */
+  .hero { padding: 72px 0 80px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+  .eyebrow { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(48px, 7vw, 92px); line-height: .95; margin: 16px 0 22px; letter-spacing: -.01em; }
+  h1 em { color: var(--accent); }
+  .lede { font-size: 18px; color: var(--muted); max-width: 470px; margin: 0 0 30px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 13px; padding: 6px 14px; border: 1px solid var(--line); border-radius: 99px; background: var(--surface); }
+  .tag.solid { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .hero-art { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; align-items: end; }
+  .hero-art img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px; box-shadow: 0 18px 40px -22px rgba(60,20,20,.45); }
+  .hero-art img:nth-child(2) { transform: translateY(-36px); }
+
+  /* section heads */
+  section.discipline { padding: 88px 0 24px; border-top: 1px solid var(--line); }
+  .disc-head { display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; margin-bottom: 56px; align-items: end; }
+  h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(38px, 5vw, 60px); line-height: 1; margin: 10px 0 0; }
+  .disc-head p { color: var(--muted); margin: 0; font-size: 17px; }
+
+  /* project */
+  .project { margin-bottom: 96px; }
+  .proj-head { display: grid; grid-template-columns: 70px 1fr; gap: 0 20px; margin-bottom: 26px; }
+  .num { font-family: var(--serif); font-size: 44px; color: var(--gold); line-height: 1; font-style: italic; }
+  h3 { font-family: var(--serif); font-weight: 600; font-size: 32px; margin: 0 0 4px; line-height: 1.1; }
+  .proj-meta { font-size: 13px; color: var(--accent); letter-spacing: .06em; text-transform: uppercase; font-weight: 500; margin-bottom: 12px; }
+  .proj-desc { color: var(--ink); max-width: 760px; margin: 0; }
+  .proj-desc + .proj-desc { margin-top: 10px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .chip { font-size: 12px; padding: 3px 10px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); }
+  .swatches { display: flex; gap: 0; margin-top: 16px; border-radius: 4px; overflow: hidden; width: max-content; max-width: 100%; }
+  .swatches span { width: 34px; height: 22px; }
+
+  .gallery { columns: 3 260px; column-gap: 14px; }
+  .gallery figure { break-inside: avoid; margin: 0 0 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; cursor: zoom-in; transition: transform .25s, box-shadow .25s; }
+  .gallery figure:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -18px rgba(60,20,20,.5); }
+  .gallery figure .pic { padding: 14px; background: #fff; }
+  .gallery figure.bleed .pic { padding: 0; }
+  .gallery figcaption { padding: 10px 14px 12px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); }
+  .gallery figcaption b { color: var(--ink); font-weight: 600; display: block; font-size: 14px; }
+
+  .concept { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); padding: 22px 26px; border-radius: 4px; margin: 0 0 22px; max-width: 860px; }
+  .concept h4 { margin: 0 0 8px; font-family: var(--serif); font-size: 22px; font-weight: 600; }
+  .concept p { margin: 0 0 10px; font-size: 15px; }
+  .concept ul { margin: 0 0 10px; padding-left: 18px; font-size: 15px; }
+  .concept p:last-child { margin: 0; }
+
+  /* about */
+  #about { padding: 88px 0; background: var(--surface); border-top: 1px solid var(--line); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .about-grid h4 { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
+  .about-grid ul { list-style: none; padding: 0; margin: 0 0 30px; }
+  .about-grid li { padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .about-grid li small { display: block; color: var(--muted); }
+  .bio { font-family: var(--serif); font-size: 26px; line-height: 1.35; margin: 18px 0 0; }
+
+  footer { background: var(--accent); color: #f8e9e4; padding: 64px 0 40px; }
+  footer h2 { color: #fff; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; align-items: end; }
+  footer a.mail { font-family: var(--serif); font-size: clamp(22px, 3.4vw, 34px); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.4); color: #fff; }
+  footer .small { font-size: 13px; opacity: .75; width: 100%; margin-top: 30px; }
+
+  /* lightbox */
+  .lb { position: fixed; inset: 0; background: rgba(20,10,10,.92); display: none; align-items: center; justify-content: center; z-index: 50; padding: 60px 70px; }
+  .lb.open { display: flex; }
+  .lb img { max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 4px; background: #fff; }
+  .lb-cap { position: absolute; bottom: 18px; left: 0; right: 0; text-align: center; color: #eadad5; font-size: 14px; }
+  .lb button { position: absolute; background: none; border: 0; color: #fff; font-size: 34px; cursor: pointer; padding: 12px; opacity: .8; }
+  .lb button:hover { opacity: 1; }
+  .lb .x { top: 8px; right: 14px; }
+  .lb .prev { left: 10px; top: 50%; transform: translateY(-50%); }
+  .lb .next { right: 10px; top: 50%; transform: translateY(-50%); }
+
+  @media (max-width: 860px) {
+    .hero { padding: 40px 0 56px; }
+    .hero .wrap, .disc-head, .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .hero-art img:nth-child(2) { transform: translateY(-18px); }
+    .nav-links { gap: 16px; }
+    .nav-links a.hide-sm { display: none; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 16px; }
+    .proj-head { grid-template-columns: 1fr; }
+    .num { font-size: 32px; margin-bottom: 6px; }
+    .gallery { columns: 2 140px; column-gap: 10px; }
+    .gallery figure { margin-bottom: 10px; }
+    .gallery figure .pic { padding: 8px; }
+    .lb { padding: 50px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Hafsa Shahid</a>
+    <nav class="nav-links">
+      <a href="#cad">CAD</a>
+      <a href="#screen">Screen Printing</a>
+      <a href="#about" class="hide-sm">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">Textile &amp; Fashion Design · Portfolio</div>
+        <h1>Hafsa<br><em>Shahid</em></h1>
+        <p class="lede">Textile designer working across computer-aided print design and hand screen printing, with a focus on motif development, surface pattern and colour.</p>
+        <div class="tags">
+          <span class="tag solid">CAD — Computer Aided Design</span>
+          <span class="tag solid">Screen Printing</span>
+          <span class="tag">Motif Development</span>
+          <span class="tag">Surface Pattern</span>
+          <span class="tag">Fashion Illustration</span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img src="img/summer-front.jpg" alt="Summer Fusion Anarkali illustration">
+        <img src="img/mono-dupatta.jpg" alt="Monochrome embellished ensemble illustration">
+        <img src="img/kurta.jpg" alt="Embroidered kurta illustration">
+      </div>
+    </div>
+  </section>
+
+  <section class="discipline" id="cad">
+    <div class="wrap">
+      <div class="disc-head">
+        <div>
+          <div class="eyebrow">Part One</div>
+          <h2>CAD<br>Print Design</h2>
+        </div>
+        <p>Digital textile work built in Adobe Photoshop and Illustrator: moodboards, colour palettes, motif libraries, engineered garment panels and seamless repeats, finished as fashion illustrations and product mock-ups.</p>
+      </div>
+      <div id="cad-projects"></div>
+    </div>
+  </section>
+
+  <section class="discipline" id="screen">
+    <div class="wrap">
+      <div class="disc-head">
+        <div>
+          <div class="eyebrow">Part Two</div>
+          <h2>Screen<br>Printing</h2>
+        </div>
+        <p>Hand-printed textiles, taken from research and colour planning through stencil layout to a finished printed piece.</p>
+      </div>
+      <div id="screen-projects"></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="eyebrow">About</div>
+        <p class="bio">A creative, detail-oriented textile designer with a strong grounding in motif development, surface pattern design and fashion illustration, moving between traditional textile techniques and digital design tools.</p>
+      </div>
+      <div>
+        <h4>Education</h4>
+        <ul>
+          <li>BS Textile and Fashion Designing<small>Fatima Jinnah Women University</small></li>
+        </ul>
+        <h4>Experience</h4>
+        <ul>
+          <li>Design Intern<small>Pakistan National Council of the Arts (PNCA), Islamabad</small></li>
+        </ul>
+        <h4>Techniques</h4>
+        <div class="chips" style="margin:0 0 26px">
+          <span class="chip">CAD Print Design</span><span class="chip">Screen Printing</span><span class="chip">Block Printing</span><span class="chip">Weaving</span><span class="chip">Silk Painting</span><span class="chip">Tie &amp; Dye</span><span class="chip">Crochet</span>
+        </div>
+        <h4>Software</h4>
+        <div class="chips" style="margin:0">
+          <span class="chip">Adobe Photoshop</span><span class="chip">Adobe Illustrator</span><span class="chip">Canva</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow" style="color:#f3c9a0">Get in touch</div>
+      <h2>Let’s work<br>together.</h2>
+    </div>
+    <div>
+      <a class="mail" href="mailto:hafsashahid2956@gmail.com">hafsashahid2956@gmail.com</a>
+      <div style="margin-top:10px;opacity:.85">Rawalpindi, Pakistan</div>
+    </div>
+    <div class="small">© Hafsa Shahid. All artwork shown is the designer’s own coursework and studio practice.</div>
+  </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="x" aria-label="Close">×</button>
+  <button class="prev" aria-label="Previous">‹</button>
+  <img alt="">
+  <button class="next" aria-label="Next">›</button>
+  <div class="lb-cap"></div>
+</div>
+
+<script>
+const CAD = [
+  {
+    title: "Summer Fusion Collection",
+    meta: "Brand-inspired print · Anarkali ensemble",
+    desc: ["A contemporary summer look that adapts the rich, detailed design vocabulary of the designer brand Maria B. Nine motifs were curated for the outfit — a scarlet macaw, sun and floral accents, tropical leaves, and summer fruits like pineapple and pomegranate — and placed across a flowing white Anarkali, wide-legged trousers and a statement dupatta."],
+    concept: `<h4>Design concept</h4>
+      <p><b>The border:</b> a repeating pineapple-and-pomegranate band, playful yet structured, placed along the waistline and sleeves.</p>
+      <p><b>The flare (ghera):</b> a scattered, breezy placement of the parrot, sun and leaf motifs.</p>
+      <p><b>The dupatta:</b> deep crimson, carrying the larger pineapple and floral motifs to tie the whole outfit together.</p>
+      <p><b>Colour:</b> bright summer pops balanced with earthy tones on a crisp white base — crimson &amp; magenta, mango &amp; mustard, soft sage, earthy brown &amp; black.</p>`,
+    swatches: ["#111","#7a4a22","#b4609a","#8fbf73","#f2a52a","#a8202f","#f6efe0","#e32a2a"],
+    chips: ["Storyboard","Moodboard","Motif placement","Fashion illustration"],
+    images: [
+      ["summer-story.jpg","Storyboard","Brand reference research"],
+      ["summer-mood.jpg","Moodboard & palette","Nine selected motifs and border"],
+      ["summer-front.jpg","Front view","Anarkali with crimson dupatta",1],
+      ["summer-back.jpg","Back view","Flare and dupatta placement",1]
+    ]
+  },
+  {
+    title: "Islamic Tile Three-Piece Suit",
+    meta: "CAD I · Final submission",
+    desc: ["A complete three-piece suit drawn from Islamic tile work. Rosettes and arabesque details from the tile moodboard were redrawn as a library of ten motifs, then engineered into a shirt front with a placket and hem border, a backside repeat, striped sleeves and a framed dupatta, all in a palette of deep maroon, dusty rose, olive and gold."],
+    swatches: ["#4a1220","#a59a68","#14462c","#f6d96a","#4a2b1c","#f9cf7b","#7e6aa2","#d4952e","#e3a395","#b7563a"],
+    chips: ["Moodboard","Colour palette","Motif library","Engineered panels","Repeat pattern"],
+    images: [
+      ["cad-cover.jpg","Final submission","CAD I"],
+      ["tile-mood.jpg","Moodboard","Islamic tile references"],
+      ["tile-palette.jpg","Colour palette",""],
+      ["tile-motifs.jpg","Motifs","Ten developed motifs"],
+      ["tile-front.jpg","Shirt front","Placket, ground repeat & hem border"],
+      ["tile-back.jpg","Shirt back","Half-drop motif repeat"],
+      ["tile-sleeves.jpg","Sleeves","Striped repeat with cuff border"],
+      ["tile-dupatta.jpg","Dupatta","Framed border with all-over ground"]
+    ]
+  },
+  {
+    title: "Mughal Heritage Jacket",
+    meta: "Print design · Jacket & scarf",
+    desc: ["Inspired by Lahore’s Mughal architecture and miniature painting. Arches, frescoes and courtly figures from the moodboard were collaged into a print engineered across the jacket fronts, lapels and sleeves, with a solid camel back and a matching architectural scarf."],
+    chips: ["Moodboard","Digital collage","Garment panels"],
+    images: [
+      ["mughal-mood.jpg","Moodboard","Mughal architecture & miniatures"],
+      ["mughal-scarf.jpg","Scarf","Architectural placement print"],
+      ["mughal-front.jpg","Jacket front","Print with contrast lapels"],
+      ["mughal-sleeve.jpg","Sleeve",""],
+      ["mughal-back.jpg","Jacket back","Solid camel panel"]
+    ]
+  },
+  {
+    title: "Monochrome Embellished Ensemble",
+    meta: "Motif development · Fashion illustration",
+    desc: ["A black-and-silver study of paisleys, florals, a heart and fan motifs, developed on a monochrome board with a grey-scale palette and then placed on a short black kurta, tulip shalwar and sheer grey dupatta."],
+    chips: ["Motif board","Monochrome palette","Illustration"],
+    images: [
+      ["mono-board.jpg","Motif board","Embellishment motifs & palette",1],
+      ["mono-front.jpg","Look — back view","",1],
+      ["mono-dupatta.jpg","Look — with dupatta","",1]
+    ]
+  },
+  {
+    title: "Life Is Sweet — Kids’ Bedding",
+    meta: "Home textiles · Character print",
+    desc: ["A playful bedding set for children built around original candy and dessert characters. Two small-scale repeats support a hero bedsheet with ‘Life Is Sweet’ typography, a co-ordinating pillow, and a room mock-up showing the set in use."],
+    swatches: ["#d03f8f","#f9dca0","#7a3fa0","#ef6b6b","#f59ab3","#b9c17c","#6b4027","#e95ba5","#2b2b2b"],
+    chips: ["Character design","Repeat pattern","Product mock-up"],
+    images: [
+      ["sweet-characters.jpg","Characters","Original candy & dessert characters"],
+      ["sweet-patterns.jpg","Repeats","Ground patterns"],
+      ["sweet-bedsheet.jpg","Bedsheet","Hero placement print"],
+      ["sweet-pillow.jpg","Pillow",""],
+      ["sweet-palette.jpg","Colour palette",""],
+      ["sweet-room.jpg","Room mock-up","Bedding set in context",1]
+    ]
+  },
+  {
+    title: "Print & Illustration",
+    meta: "Single pieces",
+    desc: ["A cushion artwork reinterpreting Mughal miniature painting, and a fashion illustration of an embroidered kurta and trouser set."],
+    chips: ["Cushion print","Miniature art","Fashion illustration"],
+    images: [
+      ["cushion.jpg","Cushion print","Mughal miniature artwork",1],
+      ["kurta.jpg","Embroidered kurta","Fashion illustration",1]
+    ]
+  },
+  {
+    title: "Semester Studies",
+    meta: "Surface pattern · Digital illustration",
+    desc: ["Coursework exploring the CAD toolkit: shape-based and geometric compositions, flip-and-repeat patterns, seamless repeats in Photoshop and Illustrator, a floral midterm with colourways, border and trouser motifs, and illustrated scenes of everyday Pakistani life."],
+    chips: ["Seamless repeats","Colourways","Geometric composition","Digital illustration"],
+    images: [
+      ["sem-midterm.jpg","Midterm","Main design & second colourway"],
+      ["sem-flip.jpg","Flip & pattern","Mirror repeat"],
+      ["sem-border.jpg","Border & trouser motif",""],
+      ["sem-trouser.jpg","Trouser pattern","With moodboard"],
+      ["sem-strawberry.jpg","Seamless pattern","Made in Photoshop"],
+      ["sem-floral.jpg","Seamless pattern","Made in Illustrator"],
+      ["sem-shapes.jpg","Shapes pattern",""],
+      ["sem-circles.jpg","Circles & stripes",""],
+      ["sem-geo1.jpg","Geometric study",""],
+      ["sem-geo2.jpg","Geometric study",""],
+      ["sem-rickshaw.jpg","Rickshaw ride","Digital illustration",1],
+      ["sem-golgappa.jpg","Golgappay","Digital illustration",1]
+    ]
+  }
+];
+
+const SCREEN = [
+  {
+    title: "Geometric Floral Dupatta",
+    meta: "Screen printing · Dupatta",
+    desc: ["A summer dupatta inspired by geometric floral motifs. Research into quilt-block and faceted flower forms led to a stylised design of angular blooms on a linear vine, which was laid out at full scale and screen printed onto a white base."],
+    concept: `<h4>Colour story</h4>
+      <ul>
+        <li><b>Orange</b> — the warmth and energy of the summer sun.</li>
+        <li><b>Green</b> — nature, for a fresh, cool look.</li>
+        <li><b>Dark plum</b> — contrast that makes the floral patterns stand out.</li>
+        <li><b>White base</b> — keeps the piece light and breathable in the heat.</li>
+      </ul>`,
+    swatches: ["#e5761c","#12663a","#26141f","#ffffff"],
+    chips: ["Research board","Moodboard","Stencil layout","Hand screen printing"],
+    images: [
+      ["dupatta-research.jpg","Research board","Geometric floral motifs"],
+      ["dupatta-mood.jpg","Moodboard","Colour story"],
+      ["dupatta-final.jpg","Finalised design","Full-scale layout",1],
+      ["dupatta-printed.jpg","Printed dupatta","Final screen-printed piece",1]
+    ]
+  }
+];
+
+const all = [];
+function render(list, el, start) {
+  el.innerHTML = list.map((p, i) => {
+    const figs = p.images.map(([src, t, c, bleed]) => {
+      const idx = all.push({ src: "img/" + src, cap: t + (c ? " — " + c : "") }) - 1;
+      return `<figure class="${bleed ? "bleed" : ""}" data-i="${idx}">
+        <div class="pic"><img loading="lazy" src="img/${src}" alt="${t}"></div>
+        <figcaption><b>${t}</b>${c || ""}</figcaption></figure>`;
+    }).join("");
+    return `<article class="project">
+      <div class="proj-head">
+        <div class="num">${String(start + i).padStart(2, "0")}</div>
+        <div>
+          <h3>${p.title}</h3>
+          <div class="proj-meta">${p.meta}</div>
+          ${p.desc.map(d => `<p class="proj-desc">${d}</p>`).join("")}
+          ${p.swatches ? `<div class="swatches">${p.swatches.map(c => `<span style="background:${c}" title="${c}"></span>`).join("")}</div>` : ""}
+          <div class="chips">${p.chips.map(c => `<span class="chip">${c}</span>`).join("")}</div>
+        </div>
+      </div>
+      ${p.concept ? `<div class="concept">${p.concept}</div>` : ""}
+      <div class="gallery">${figs}</div>
+    </article>`;
+  }).join("");
+}
+render(CAD, document.getElementById("cad-projects"), 1);
+render(SCREEN, document.getElementById("screen-projects"), CAD.length + 1);
+
+const lb = document.getElementById("lb"), lbImg = lb.querySelector("img"), lbCap = lb.querySelector(".lb-cap");
+let cur = 0;
+function show(i) { cur = (i + all.length) % all.length; lbImg.src = all[cur].src; lbImg.alt = all[cur].cap; lbCap.textContent = all[cur].cap; }
+document.addEventListener("click", e => {
+  const f = e.target.closest("figure[data-i]");
+  if (f) { show(+f.dataset.i); lb.classList.add("open"); }
+});
+lb.querySelector(".x").onclick = () => lb.classList.remove("open");
+lb.querySelector(".prev").onclick = () => show(cur - 1);
+lb.querySelector(".next").onclick = () => show(cur + 1);
+lb.addEventListener("click", e => { if (e.target === lb) lb.classList.remove("open"); });
+document.addEventListener("keydown", e => {
+  if (!lb.classList.contains("open")) return;
+  if (e.key === "Escape") lb.classList.remove("open");
+  if (e.key === "ArrowLeft") show(cur - 1);
+  if (e.key === "ArrowRight") show(cur + 1);
+});
+</script>
+</body>
+</html>
