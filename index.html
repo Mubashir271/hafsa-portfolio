@@ -46,7 +46,10 @@
   .tags { display: flex; flex-wrap: wrap; gap: 8px; }
   .tag { font-size: 13px; padding: 6px 14px; border: 1px solid var(--line); border-radius: 99px; background: var(--surface); }
   .tag.solid { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .hero-art { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; align-items: end; }
+  a.tag { text-decoration: none; transition: opacity .2s; }
+  a.tag:hover { opacity: .85; }
+  section[id], footer[id] { scroll-margin-top: 64px; }
+  .hero-art { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: end; }
   .hero-art img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px; box-shadow: 0 18px 40px -22px rgba(60,20,20,.45); }
   .hero-art img:nth-child(2) { transform: translateY(-36px); }
 
@@ -76,6 +79,22 @@
   .gallery figure.bleed .pic { padding: 0; }
   .gallery figcaption { padding: 10px 14px 12px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); }
   .gallery figcaption b { color: var(--ink); font-weight: 600; display: block; font-size: 14px; }
+
+  .slider { position: relative; }
+  .slider-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; border-radius: 6px; }
+  .slider-track::-webkit-scrollbar { display: none; }
+  .slider-track figure { flex: 0 0 100%; scroll-snap-align: start; margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; cursor: zoom-in; }
+  .slider-track .pic { background: #fff; height: 540px; display: flex; align-items: center; justify-content: center; padding: 14px; }
+  .slider-track img { max-height: 100%; max-width: 100%; object-fit: contain; }
+  .slider-track figcaption { padding: 10px 14px 12px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); }
+  .slider-track figcaption b { color: var(--ink); font-weight: 600; display: block; font-size: 14px; }
+  .slider-btn { position: absolute; top: 270px; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font-size: 24px; line-height: 1; cursor: pointer; box-shadow: 0 8px 20px -10px rgba(60,20,20,.5); }
+  .slider-btn[hidden] { display: none; }
+  .slider-btn.prev { left: 12px; }
+  .slider-btn.next { right: 12px; }
+  .slider-dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
+  .slider-dots button { width: 9px; height: 9px; padding: 0; border-radius: 50%; border: 0; background: var(--line); cursor: pointer; }
+  .slider-dots button.on { background: var(--accent); }
 
   .concept { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); padding: 22px 26px; border-radius: 4px; margin: 0 0 22px; max-width: 860px; }
   .concept h4 { margin: 0 0 8px; font-family: var(--serif); font-size: 22px; font-weight: 600; }
@@ -123,6 +142,8 @@
     .gallery { columns: 2 140px; column-gap: 10px; }
     .gallery figure { margin-bottom: 10px; }
     .gallery figure .pic { padding: 8px; }
+    .slider-track .pic { height: 360px; padding: 8px; }
+    .slider-btn { top: 180px; width: 38px; height: 38px; font-size: 20px; }
     .lb { padding: 50px 10px; }
   }
 </style>
@@ -135,6 +156,8 @@
     <nav class="nav-links">
       <a href="#cad">CAD</a>
       <a href="#screen">Screen Printing</a>
+      <a href="#textile">Textile</a>
+      <a href="#drawing" class="hide-sm">Drawing</a>
       <a href="#about" class="hide-sm">About</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -149,8 +172,10 @@
         <h1>Hafsa<br><em>Shahid</em></h1>
         <p class="lede">Textile designer working across computer-aided print design and hand screen printing, with a focus on motif development, surface pattern and colour.</p>
         <div class="tags">
-          <span class="tag solid">CAD — Computer Aided Design</span>
-          <span class="tag solid">Screen Printing</span>
+          <a class="tag solid" href="#cad">CAD — Computer Aided Design</a>
+          <a class="tag solid" href="#screen">Screen Printing</a>
+          <a class="tag solid" href="#textile">Textile</a>
+          <a class="tag solid" href="#drawing">Drawing &amp; Sketching</a>
           <span class="tag">Motif Development</span>
           <span class="tag">Surface Pattern</span>
           <span class="tag">Fashion Illustration</span>
@@ -158,7 +183,6 @@
       </div>
       <div class="hero-art">
         <img src="img/summer-front.jpg" alt="Summer Fusion Anarkali illustration">
-        <img src="img/mono-dupatta.jpg" alt="Monochrome embellished ensemble illustration">
         <img src="img/kurta.jpg" alt="Embroidered kurta illustration">
       </div>
     </div>
@@ -187,6 +211,32 @@
         <p>Hand-printed textiles, taken from research and colour planning through stencil layout to a finished printed piece.</p>
       </div>
       <div id="screen-projects"></div>
+    </div>
+  </section>
+
+  <section class="discipline" id="textile">
+    <div class="wrap">
+      <div class="disc-head">
+        <div>
+          <div class="eyebrow">Part Three</div>
+          <h2>Textile</h2>
+        </div>
+        <p>Hand-made textiles in silk painting, block printing and weaving, from painted silk panels and scarves to block-printed fabric and a woven butterfly light.</p>
+      </div>
+      <div id="textile-projects"></div>
+    </div>
+  </section>
+
+  <section class="discipline" id="drawing">
+    <div class="wrap">
+      <div class="disc-head">
+        <div>
+          <div class="eyebrow">Part Four</div>
+          <h2>Drawing &amp;<br>Sketching</h2>
+        </div>
+        <p>A before and after. My first pencil, charcoal and pastel drawings sit beside my recent painted, patterned and mixed-media work, showing how observation, colour and pattern have grown through steady practice.</p>
+      </div>
+      <div id="drawing-projects"></div>
     </div>
   </section>
 
@@ -291,17 +341,6 @@ const CAD = [
     ]
   },
   {
-    title: "Monochrome Embellished Ensemble",
-    meta: "Motif development · Fashion illustration",
-    desc: ["A black-and-silver study of paisleys, florals, a heart and fan motifs, developed on a monochrome board with a grey-scale palette and then placed on a short black kurta, tulip shalwar and sheer grey dupatta."],
-    chips: ["Motif board","Monochrome palette","Illustration"],
-    images: [
-      ["mono-board.jpg","Motif board","Embellishment motifs & palette",1],
-      ["mono-front.jpg","Look — back view","",1],
-      ["mono-dupatta.jpg","Look — with dupatta","",1]
-    ]
-  },
-  {
     title: "Life Is Sweet — Kids’ Bedding",
     meta: "Home textiles · Character print",
     desc: ["A playful bedding set for children built around original candy and dessert characters. Two small-scale repeats support a hero bedsheet with ‘Life Is Sweet’ typography, a co-ordinating pillow, and a room mock-up showing the set in use."],
@@ -371,13 +410,95 @@ const SCREEN = [
   }
 ];
 
+const SILK = [
+  {
+    title: "Hand-Painted Silk",
+    meta: "Silk painting · Panel & scarf",
+    desc: ["A framed silk panel of red tulips tied with a black bow, set against a wet-blended ground of turquoise, magenta and saffron, alongside a long scarf painted with an enchanted-forest scene of spotted toadstools, butterflies and twisting vines on a pale mint base."],
+    chips: ["Gutta resist","Wet-on-wet dyeing","Hand painting"],
+    images: [
+      ["silk-tulips.jpg","Tulip panel","Hand-painted silk",1],
+      ["silk-scarf.jpg","Forest scarf","Toadstools & butterflies",1]
+    ]
+  }
+];
+
+const BLOCK = [
+  {
+    title: "Block-Printed Suit & Dupatta",
+    meta: "Block printing · Exhibition display",
+    desc: ["A hand block-printed set on a pale yellow cotton base. Indigo star-shaped motifs frame a central panel of fine coral-red florals, with a dense indigo-and-coral border at the hem and a matching border on the dupatta. It was shown with the carved blocks, process file and research boards."],
+    swatches: ["#1f2a5c","#e0614f","#efe0a8"],
+    chips: ["Hand block printing","Border layout","Two-colour print","Exhibition"],
+    images: [
+      ["block-display.jpg","Exhibition display","Printed fabric, dupatta, blocks & research boards",1]
+    ]
+  }
+];
+
+const WEAVING = [
+  {
+    title: "Woven Butterfly Light",
+    meta: "Weaving · Decorative light",
+    desc: ["A free-standing butterfly sculpture with hand-woven wings. Each wing panel was woven on a shaped cardboard loom in sparkling magenta, mustard and bottle-green yarn, then set into painted green wooden wings edged with sequins and lit from within by fairy lights."],
+    swatches: ["#b0124f","#e0a82a","#123f2a","#0f5a4e"],
+    chips: ["Process work","Cardboard loom","Hand weaving","Mixed media"],
+    images: [
+      ["weave-process.jpg","Process","Weaving the wing panels on shaped cardboard looms"],
+      ["weave-detail.jpg","Wing detail","Woven yarn, sequin edging & lights"],
+      ["weave-butterfly.jpg","Final piece","Butterfly light in a room setting",1],
+      ["weave-lit.jpg","Lit at night","",1]
+    ]
+  }
+];
+
+const DRAWING = [
+  {
+    title: "Where It Started",
+    meta: "Early work · Pencil, charcoal & pastel",
+    desc: ["My earliest observational drawings: a potted plant, a vegetable still life, a still life of everyday objects, a house on stilts, a portrait and a self-portrait drawn from my reflection in a spoon. Line, proportion and shading were still being worked out here. Each one was a step in learning to look closely, and the same habit of studying form and tone now runs through my motif and textile work."],
+    chips: ["Observational drawing","Still life","Perspective","Portrait","Self-portrait","Tonal shading"],
+    slider: true,
+    images: [
+      ["draw-plant.jpg","Potted plant","Pencil study"],
+      ["draw-vegetables.jpg","Vegetable still life","Pencil"],
+      ["draw-stilllife.jpg","Object still life","Chair, umbrella, bag & basket"],
+      ["draw-hut.jpg","House on stilts","Perspective study"],
+      ["draw-portrait.jpg","Portrait","Charcoal"],
+      ["draw-spoon-portrait.jpg","Self-portrait in a spoon","Reflection study in pastel"]
+    ]
+  },
+  {
+    title: "Where I Am Now",
+    meta: "Recent work · Paint, marbling, mixed media & pop art",
+    desc: ["What practice has built on those first drawings. A charcoal skeleton study shows stronger form and tone, and a watercolour-and-ink street scene of Androon Rawalpindi captures its old balconies, arches and tangled wires. Motifs are now planned on tracing paper and developed into mirror, half-drop, continuous and brick repeats, each worked through a deliberate colour scheme. Alongside them are paintings over marbled grounds, illustrated strawberry lettering, a dessert-themed poster, a mixed-media collage built from seeds, buttons, zips and found objects, and a pop art piece on a relatable girls’ issue: eyeliner that never comes out the same on both eyes."],
+    chips: ["Charcoal","Watercolour & ink","Repeat patterns","Colour theory","Marbling","Lettering","Mixed media","Pop art"],
+    slider: true,
+    images: [
+      ["now-skeleton.jpg","Skeleton study","Charcoal"],
+      ["now-rawalpindi.jpg","Androon Rawalpindi","“Purani deewaron ka shehar”: the city of old walls, in watercolour & ink"],
+      ["now-mirror.jpg","Mirror repeat","Analogous colour scheme"],
+      ["now-halfdrop.jpg","Half-drop repeat","Complementary colour scheme"],
+      ["now-continuous.jpg","Continuous repeat","Triad colour scheme"],
+      ["now-brick.jpg","Brick repeat","Double complementary colour scheme"],
+      ["now-dolphin.jpg","Dolphin","Painted over a marbled ground"],
+      ["now-tree.jpg","Looking up","Tree painted over a marbled canopy"],
+      ["now-strawberries.jpg","Strawberries","Painting"],
+      ["now-lettering.jpg","Strawberry lettering","Illustrated ABC & 123"],
+      ["now-poster.jpg","Sweet treats poster","Lettering with dessert illustrations"],
+      ["now-collage.jpg","Tumbler collage","Seeds, buttons, zips & found objects"],
+      ["now-popart.jpg","Pop art — eyeliner struggles","“Left eye pyari, right eye bhari”: on never getting both eyes the same"]
+    ]
+  }
+];
+
 const all = [];
 function render(list, el, start) {
   el.innerHTML = list.map((p, i) => {
     const figs = p.images.map(([src, t, c, bleed]) => {
       const idx = all.push({ src: "img/" + src, cap: t + (c ? " — " + c : "") }) - 1;
       return `<figure class="${bleed ? "bleed" : ""}" data-i="${idx}">
-        <div class="pic"><img loading="lazy" src="img/${src}" alt="${t}"></div>
+        <div class="pic"><img src="img/${src}" alt="${t}"></div>
         <figcaption><b>${t}</b>${c || ""}</figcaption></figure>`;
     }).join("");
     return `<article class="project">
@@ -392,12 +513,52 @@ function render(list, el, start) {
         </div>
       </div>
       ${p.concept ? `<div class="concept">${p.concept}</div>` : ""}
-      <div class="gallery">${figs}</div>
+      ${p.slider
+        ? `<div class="slider">
+            <div class="slider-track">${figs}</div>
+            <button class="slider-btn prev" aria-label="Previous drawing">‹</button>
+            <button class="slider-btn next" aria-label="Next drawing">›</button>
+            <div class="slider-dots">${p.images.map((_, j) => `<button aria-label="Drawing ${j + 1}"></button>`).join("")}</div>
+          </div>`
+        : `<div class="gallery">${figs}</div>`}
     </article>`;
   }).join("");
 }
 render(CAD, document.getElementById("cad-projects"), 1);
 render(SCREEN, document.getElementById("screen-projects"), CAD.length + 1);
+render([...SILK, ...BLOCK, ...WEAVING], document.getElementById("textile-projects"), CAD.length + SCREEN.length + 1);
+render(DRAWING, document.getElementById("drawing-projects"), CAD.length + SCREEN.length + SILK.length + BLOCK.length + WEAVING.length + 1);
+
+document.querySelectorAll(".slider").forEach(s => {
+  const track = s.querySelector(".slider-track"), dots = [...s.querySelectorAll(".slider-dots button")];
+  const at = () => Math.round(track.scrollLeft / track.clientWidth);
+  const prev = s.querySelector(".prev"), next = s.querySelector(".next");
+  const go = i => track.scrollTo({ left: Math.max(0, Math.min(i, dots.length - 1)) * track.clientWidth });
+  const mark = () => {
+    const i = at();
+    dots.forEach((d, j) => d.classList.toggle("on", j === i));
+    prev.hidden = i === 0;
+    next.hidden = i === dots.length - 1;
+  };
+  prev.onclick = () => go(at() - 1);
+  next.onclick = () => go(at() + 1);
+  dots.forEach((d, j) => d.onclick = () => go(j));
+  track.addEventListener("scroll", mark);
+  mark();
+});
+
+// Images above a section can finish loading after the jump and push it down,
+// so scroll again once they're all in.
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener("click", e => {
+  const target = document.querySelector(a.getAttribute("href"));
+  if (!target) return;
+  e.preventDefault();
+  history.pushState(null, "", a.getAttribute("href"));
+  target.scrollIntoView({ behavior: "smooth" });
+  const pending = [...document.images].filter(img => !img.complete && (img.compareDocumentPosition(target) & Node.DOCUMENT_POSITION_FOLLOWING));
+  if (pending.length) Promise.all(pending.map(img => new Promise(r => { img.onload = img.onerror = r; })))
+    .then(() => target.scrollIntoView({ behavior: "smooth" }));
+}));
 
 const lb = document.getElementById("lb"), lbImg = lb.querySelector("img"), lbCap = lb.querySelector(".lb-cap");
 let cur = 0;
